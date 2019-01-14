@@ -7,6 +7,7 @@ export const Main = (props) => {
       <h1>
         <Link to="/">Reduxstagram</Link>
       </h1>
+      {/* This passes down all props to the next component */}
       {React.cloneElement(props.children, props)}
     </div>
   )
