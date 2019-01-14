@@ -1,8 +1,8 @@
 import { createStore, compse } from 'redux';
 import { syncHistoryWithStore } from 'react-router-redux';
-import { broswerHistory } from 'react-router';
+import { browserHistory } from 'react-router';
 
-import { rootReducer } from './reducers';
+import rootReducer from './reducers';
 import comments from './data/comments';
 import posts from './data/posts';
 
@@ -16,7 +16,7 @@ const defaultState = {
 const store = createStore(rootReducer, defaultState);
 
 // Link broswer history with store 
-export const history = syncHistoryWithStore(broswerHistory, store);
+export const history = syncHistoryWithStore(browserHistory, store);
 
 // Export 
 export default store;

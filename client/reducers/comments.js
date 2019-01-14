@@ -2,7 +2,9 @@
 // 1. The action (info on what happened)
 // 2. copy the current state
 
-export default function comments(state = [], action) {
+function comments(state = [], action) {
   console.log(state, action);
   return state;
 }
+
+export default comments;
