@@ -4,7 +4,7 @@
 // Every reducer runs when you use dispatch
 
 function comments(state = [], action) {
-  console.log(state, action);
+  // console.log(state, action);
   return state;
 }
 
