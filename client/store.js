@@ -1,4 +1,4 @@
-import { createStore, compse } from 'redux';
+import { createStore, compose } from 'redux';
 import { syncHistoryWithStore } from 'react-router-redux';
 import { browserHistory } from 'react-router';
 
@@ -12,11 +12,24 @@ const defaultState = {
   comments
 }
 
+// Redux dev tools 
+const enhancers = compose(
+  window.devToolsExtension ? window.devToolsExtension() : (f) => f
+);
+
 // Create store
-const store = createStore(rootReducer, defaultState);
+const store = createStore(rootReducer, defaultState, enhancers);
 
 // Link broswer history with store 
 export const history = syncHistoryWithStore(browserHistory, store);
+
+// Hot reload 
+if(module.hot){
+  module.hot.accept('./reducers/', () => {
+    const nextRootReducer = require('./reducers/index').default;
+    store.replaceReducer(nextRootReducer);
+  })
+}
 
 // Export 
 export default store;
